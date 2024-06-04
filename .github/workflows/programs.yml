@@ -1,6 +1,10 @@
 name: Exiled Programs CI
 
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+    paths:
+      - 'Exiled.Installer/**'
 
 jobs:
   build:
