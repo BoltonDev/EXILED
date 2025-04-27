@@ -7,12 +7,6 @@
 
 namespace Exiled.API.Features.Toys
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     using AdminToys;
     using Exiled.API.Enums;
     using Exiled.API.Interfaces;
@@ -28,7 +22,11 @@ namespace Exiled.API.Features.Toys
         /// </summary>
         /// <param name="scp079CameraToy">The <see cref="Scp079CameraToy"/> of the toy.</param>
         internal CameraToy(Scp079CameraToy scp079CameraToy)
-            : base(scp079CameraToy, AdminToyType.CameraToy) => Base = scp079CameraToy;
+            : base(scp079CameraToy, AdminToyType.CameraToy)
+        {
+            Base = scp079CameraToy;
+            Camera = new Features.Camera(Base._camera);
+        }
 
         /// <summary>
         /// Gets the base <see cref="Scp079CameraToy"/>.
@@ -79,5 +77,10 @@ namespace Exiled.API.Features.Toys
             get => Base.NetworkLabel;
             set => Base.NetworkLabel = value;
         }
+
+        /// <summary>
+        /// Gets the camera associated with this CameraToy.
+        /// </summary>
+        public Exiled.API.Features.Camera Camera { get; }
     }
 }
